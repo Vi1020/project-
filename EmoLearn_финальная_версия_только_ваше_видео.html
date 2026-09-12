@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EmoLearn — Эмоциональный интеллект</title>
+<style>
+:root{--cream:#f8f0e4;--paper:#fffaf2;--brown:#3b2115;--orange:#c95e24;--muted:#8d7462;--line:#e7d5c1;--dark:#2b180f}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--brown);font-family:Georgia,serif}
+a{text-decoration:none;color:inherit}.nav{position:sticky;top:0;z-index:20;background:rgba(255,250,242,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:15px 5%;display:flex;align-items:center;justify-content:space-between;gap:20px}.logo{font-size:22px;font-weight:700}.logo span{color:var(--orange)}.links{display:flex;gap:18px;font:14px Arial,sans-serif}.links a:hover{color:var(--orange)}
+.hero{max-width:1180px;margin:auto;padding:95px 5% 85px;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}.eyebrow{color:var(--orange);font:700 13px Arial,sans-serif;letter-spacing:2px}.hero h1{font-size:clamp(48px,7vw,84px);line-height:.98;margin:20px 0}.hero p{font:18px/1.7 Arial,sans-serif;color:#6f5d50;max-width:650px}.btn{display:inline-block;padding:15px 24px;border-radius:999px;background:var(--orange);color:white;font:700 14px Arial,sans-serif;margin:10px 8px 0 0;border:0;cursor:pointer}.btn.alt{background:transparent;color:var(--orange);border:1px solid var(--orange)}.hero-card{background:#ead4bd;border-radius:28px;padding:20px;min-height:390px;display:flex;align-items:end;justify-content:center}.hero-card .art{font-size:120px;filter:sepia(.3);padding:65px 20px;text-align:center}
+section{padding:88px 5%}.inner{max-width:1180px;margin:auto}.num{font-size:72px;color:#ead8c3;line-height:1}.title{font-size:48px;margin:0 0 16px}.sub{font:16px/1.7 Arial,sans-serif;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:38px}.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:27px;box-shadow:0 10px 30px rgba(75,40,20,.08)}.card h3{font-size:24px;margin:7px 0 12px}.card p,.card li{font:15px/1.65 Arial,sans-serif;color:var(--muted)}
+.lesson-box{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:32px;margin-top:30px}.lesson-box h3{font-size:26px;margin-top:0}.lesson-box h4{font-size:20px;margin:25px 0 8px}.lesson-box ul{padding-left:22px}
+.timeline{position:relative;margin:45px auto 0;max-width:900px}.timeline:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:#d99a6e}.event{width:45%;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px;margin:0 0 28px;position:relative;box-shadow:0 8px 24px rgba(75,40,20,.07)}.event:nth-child(even){margin-left:55%}.event b{font:700 12px Arial,sans-serif;color:var(--orange)}.event h3{font-size:23px;margin:8px 0}.event p{font:14px/1.6 Arial,sans-serif;color:var(--muted)}
+.dark{background:var(--dark);color:#fff0df}.dark .sub,.dark .card p,.dark .card li{color:#d7bda8}.dark .card{background:#382116;border-color:#66432f}.game{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:35px}
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:35px}.video{background:var(--paper);border-radius:20px;overflow:hidden;border:1px solid var(--line)}.video iframe{width:100%;aspect-ratio:16/9;border:0;display:block}.video-body{padding:20px}.video-body h3{margin:0 0 8px;font-size:21px}.video-body p{font:14px/1.5 Arial,sans-serif;color:var(--muted)}
+.test{max-width:850px;margin:35px auto;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:30px}.q{padding:20px 0;border-bottom:1px solid var(--line);font:16px/1.6 Arial,sans-serif}.q b{display:block;margin-bottom:10px}.q label{display:block;padding:9px 12px;margin:6px 0;border:1px solid #ead8c3;border-radius:12px;cursor:pointer}.q label:hover{background:#f6eadb}.result{display:none;margin-top:25px;padding:24px;border-radius:18px;background:#f1dfca;font:16px/1.6 Arial,sans-serif}.result.show{display:block}.score{font-size:30px;color:var(--orange);font-weight:700}
+.stats-wrap{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:35px}.stat-card{background:#382116;border:1px solid #66432f;border-radius:22px;padding:25px}.stat-card h3{margin-top:0}.bar{height:18px;background:#5a3928;border-radius:99px;overflow:hidden;margin:12px 0 20px}.bar span{display:block;height:100%;background:#d8793b;width:0;transition:.6s}.mini{font:14px/1.6 Arial,sans-serif;color:#d7bda8}.email-box{margin-top:25px;padding:25px;border:1px solid #66432f;border-radius:20px;background:#321b12}.email-box input{width:100%;padding:13px;border-radius:10px;border:1px solid #8b6249;background:#fffaf2;color:#3b2115;margin:8px 0 12px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:35px}.fact{background:var(--paper);border-radius:20px;padding:28px;border:1px solid var(--line)}.fact strong{font-size:42px;color:var(--orange);display:block;margin-bottom:12px}.fact p{font:14px/1.6 Arial,sans-serif;color:var(--muted)}
+.reflection{margin-top:30px;background:#f2e4d2;border:1px solid var(--line);border-radius:22px;padding:28px}.reflection textarea{width:100%;min-height:110px;border:1px solid var(--line);border-radius:14px;padding:14px;font:15px Arial,sans-serif;background:#fffaf2}
+footer{padding:45px 5%;text-align:center;background:#ead8c3;color:#6f5d50;font:14px Arial,sans-serif}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:65px}.cards,.video-grid,.facts,.game,.stats-wrap{grid-template-columns:1fr}.event,.event:nth-child(even){width:100%;margin-left:0}.timeline:before{display:none}.links{display:none}.title{font-size:38px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="logo">◉ Emo<span>Learn</span></div><div class="links"><a href="#lesson">Урок</a><a href="#plan">План</a><a href="#game">Игра</a><a href="#test">Тест</a><a href="#video">Видео</a><a href="#facts">Факты</a><a href="#stats">Статистика</a></div></nav>
+
+<header class="hero"><div><div class="eyebrow">ДЕМО-УРОК</div><h1>Эмоциональный интеллект</h1><p>Научись распознавать свои эмоции, управлять ими и понимать чувства других — в одном интерактивном уроке.</p><a class="btn" href="#lesson">Перейти к уроку</a><a class="btn alt" href="#video">Смотреть видео</a></div><div class="hero-card"><div class="art">🍂<br>🧠<br>📖</div></div></header>
+
+<section id="lesson"><div class="inner"><div class="num">01</div><h2 class="title">Содержание урока</h2><p class="sub">Карточка дисциплины и полный маршрут демо-урока.</p><div class="cards">
+<div class="card"><h3>🧠 Что такое EQ</h3><p>Эмоциональный интеллект — способность распознавать эмоции, понимать их причины и последствия, регулировать собственные реакции и учитывать чувства других людей.</p></div>
+<div class="card"><h3>🔎 Самосознание</h3><p>Учимся замечать эмоцию, называть её, определять интенсивность и связывать переживание с ситуацией, мыслями и потребностями.</p></div>
+<div class="card"><h3>🌿 Саморегуляция</h3><p>Осваиваем паузу, спокойное дыхание, переключение внимания, переоценку ситуации и технику STOP.</p></div>
+<div class="card"><h3>💛 Эмпатия</h3><p>Тренируем способность понять эмоциональное состояние другого человека, не выдавая предположение за факт.</p></div>
+<div class="card"><h3>💬 Социальные навыки</h3><p>Активное слушание, уточняющие вопросы, конструктивная обратная связь, уважение границ и решение разногласий.</p></div>
+<div class="card"><h3>🛠 Инструменты EQ</h3><p>Дневник эмоций, карта чувств, шкала интенсивности, «эмоция → мысль → действие» и ежедневная рефлексия.</p></div>
+</div></div></section>
+
+<section><div class="inner"><div class="num">02</div><h2 class="title">Введение в урок</h2><p class="sub">Эмоции — часть нормальной психической жизни и источник информации о том, что для нас важно. Эмоциональный интеллект не означает «никогда не злиться» или «всегда быть спокойным». Он помогает замечать переживание, понимать его и выбирать действие, которое соответствует ситуации.</p>
+<div class="lesson-box"><h3>Что должен уметь студент после урока</h3><ul><li>объяснять понятие эмоционального интеллекта;</li><li>различать эмоцию, мысль, телесную реакцию и действие;</li><li>определять собственное эмоциональное состояние и его интенсивность;</li><li>применять простые способы саморегуляции;</li><li>использовать активное слушание и эмпатичный ответ;</li><li>анализировать конфликтную ситуацию и выбирать конструктивную реакцию.</li></ul>
+<h4>Мини-алгоритм осознанной реакции</h4><p><b>Событие → замечаю эмоцию → называю её → делаю паузу → проверяю мысль → выбираю действие.</b></p></div></div></section>
+
+<section id="plan"><div class="inner"><div class="num">03</div><h2 class="title">Тематический план</h2><p class="sub">Семь занятий в формате ленты времени.</p><div class="timeline">
+<div class="event"><b>45 МИН</b><h3>1. Что такое EQ и зачем он нужен</h3><p>Понятие эмоционального интеллекта, его составляющие и примеры из учёбы, работы и общения.</p></div>
+<div class="event"><b>45 МИН</b><h3>2. Самосознание: карта эмоций</h3><p>Связь ситуации, мысли, эмоции, телесных ощущений и поведения.</p></div>
+<div class="event"><b>30 МИН</b><h3>3. Эмоциональный словарь</h3><p>Расширяем словарь чувств и учимся точнее описывать внутреннее состояние.</p></div>
+<div class="event"><b>60 МИН</b><h3>4. Саморегуляция: техники</h3><p>Пауза, дыхание, переключение внимания, переоценка ситуации и STOP.</p></div>
+<div class="event"><b>45 МИН</b><h3>5. Эмпатия в действии</h3><p>Активное слушание, уточнение, отражение чувств и уважение к границам.</p></div>
+<div class="event"><b>60 МИН</b><h3>6. Социальные навыки и коммуникация</h3><p>Обратная связь, «я-сообщения», разрешение разногласий и сотрудничество.</p></div>
+<div class="event"><b>90 МИН</b><h3>7. Деловая игра и тестирование</h3><p>Игровая практика, итоговый тест, сбор результатов и рефлексия.</p></div>
+</div></div></section>
+
+<section id="game" class="dark"><div class="inner"><div class="num">04</div><h2 class="title">Деловая игра</h2><p class="sub">Игровая модель цифрового урока: участник проходит четыре станции и принимает решения в эмоционально насыщенных ситуациях.</p><div class="game">
+<div class="card"><h3>1. Распознай эмоцию</h3><p>Ситуация: перед выступлением студент замечает учащённое сердцебиение, напряжение и желание избежать выступления. Задача: назвать возможную эмоцию и объяснить признаки.</p><a class="btn" href="#test">Запустить</a></div>
+<div class="card"><h3>2. Управляй реакцией</h3><p>Ситуация: собеседник резко ответил на замечание. Выберите стратегию: сделать паузу, уточнить смысл слов и ответить без нападения.</p><a class="btn" href="#test">Запустить</a></div>
+<div class="card"><h3>3. Эмпатия-тренажёр</h3><p>Реплика: «Я всё подготовил, но мне сказали, что этого недостаточно». Сформулируйте ответ, который отражает переживание человека и не обесценивает его чувства.</p></div>
+<div class="card"><h3>4. Командный вызов</h3><p>Команда распределяет роли, решает общую задачу и после раунда отмечает, какие навыки помогли: слушание, ясность, уважение, управление напряжением.</p></div>
+</div><div class="lesson-box" style="margin-top:28px"><h3>Правило игры</h3><p>Здесь нет задачи «угадать характер человека». Оценивается качество выбранной стратегии: насколько она осознанная, безопасная, уважительная и подходит ситуации.</p></div></div></section>
+
+<section id="video"><div class="inner"><div class="num">05</div><h2 class="title">Видеолекции и презентации</h2><p class="sub">Три готовых материала YouTube: базовое знакомство с EQ, саморегуляция и понимание эмоций.</p><div class="video-grid">
+<div class="video"><iframe src="https://www.youtube.com/embed/AXVu7brOG_c" title="4 шага для развития эмоционального интеллекта" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="video-body"><h3>4 шага для развития эмоционального интеллекта</h3><p>Вводное видео для знакомства с темой.</p><a class="btn" href="https://youtu.be/AXVu7brOG_c?si=7bGh0Hs7eBx8Pq2_" target="_blank" rel="noopener">Открыть на YouTube</a></div></div>
+</div></div></div></section>
+
+<section id="test"><div class="inner"><div class="num">06</div><h2 class="title">Тест: проверь себя</h2><p class="sub">10 вопросов · автоматический подсчёт · 10 баллов максимум. Тест сочетает одиночный и множественный выбор, ситуационные задания и оценку приоритета.</p>
+<form class="test" id="quiz">
+<div class="q"><b>1. Что точнее всего описывает эмоциональный интеллект?</b><label><input type="radio" name="q1" value="1" required> Способность распознавать, понимать и регулировать эмоции</label><label><input type="radio" name="q1" value="0"> Скорость выполнения математических вычислений</label><label><input type="radio" name="q1" value="0"> Объём долговременной памяти</label><label><input type="radio" name="q1" value="0"> Количество выученных фактов</label></div>
+<div class="q"><b>2. Что относится к самосознанию?</b><label><input type="checkbox" name="q2" value="1"> Замечать и называть собственную эмоцию</label><label><input type="checkbox" name="q2" value="1"> Отслеживать телесные сигналы состояния</label><label><input type="checkbox" name="q2" value="0"> Игнорировать повторяющиеся эмоциональные реакции</label><label><input type="checkbox" name="q2" value="0"> Автоматически обвинять другого человека</label></div>
+<div class="q"><b>3. Какая последовательность помогает сделать реакцию более осознанной?</b><label><input type="radio" name="q3" value="1"> Событие → эмоция → пауза → выбор действия</label><label><input type="radio" name="q3" value="0"> Событие → мгновенная реакция → конфликт</label><label><input type="radio" name="q3" value="0"> Событие → подавление эмоции → игнорирование</label><label><input type="radio" name="q3" value="0"> Событие → обвинение → спор</label></div>
+<div class="q"><b>4. Что означает техника STOP в рамках урока?</b><label><input type="radio" name="q4" value="1"> Остановиться, сделать паузу, оценить ситуацию и выбрать действие</label><label><input type="radio" name="q4" value="0"> Продолжать разговор до победы в споре</label><label><input type="radio" name="q4" value="0"> Полностью запретить себе чувствовать</label><label><input type="radio" name="q4" value="0"> Сразу ответить на первое импульсивное желание</label></div>
+<div class="q"><b>5. Человек говорит: «Я очень расстроен результатом». Какой ответ лучше показывает эмпатию?</b><label><input type="radio" name="q5" value="1"> «Похоже, тебе действительно неприятно. Хочешь рассказать, что больше всего задело?»</label><label><input type="radio" name="q5" value="0"> «Не расстраивайся, это вообще мелочь»</label><label><input type="radio" name="q5" value="0"> «Я же говорил, что так и будет»</label><label><input type="radio" name="q5" value="0"> «У всех бывает хуже»</label></div>
+<div class="q"><b>6. Какие действия относятся к активному слушанию?</b><label><input type="checkbox" name="q6" value="1"> Задавать уточняющие вопросы</label><label><input type="checkbox" name="q6" value="1"> Перефразировать услышанное, чтобы проверить понимание</label><label><input type="checkbox" name="q6" value="0"> Перебивать советом до окончания мысли</label><label><input type="checkbox" name="q6" value="0"> Сразу переводить разговор на себя</label></div>
+<div class="q"><b>7. В конфликте человек чувствует раздражение. Какой первый шаг наиболее конструктивен?</b><label><input type="radio" name="q7" value="1"> Сделать паузу и сначала понять, что именно происходит</label><label><input type="radio" name="q7" value="0"> Повысить голос, чтобы его услышали</label><label><input type="radio" name="q7" value="0"> Написать резкий ответ сразу</label><label><input type="radio" name="q7" value="0"> Притвориться, что эмоции не существует</label></div>
+<div class="q"><b>8. Что является полезным инструментом для наблюдения за своими эмоциями?</b><label><input type="radio" name="q8" value="1"> Дневник эмоций с записью ситуации, чувства, мысли и реакции</label><label><input type="radio" name="q8" value="0"> Список чужих ошибок</label><label><input type="radio" name="q8" value="0"> Игнорирование неприятных ситуаций</label><label><input type="radio" name="q8" value="0"> Запрет на выражение любых чувств</label></div>
+<div class="q"><b>9. Что лучше всего помогает различить эмоцию и мысль?</b><label><input type="radio" name="q9" value="1"> Эмоция — переживание; мысль — интерпретация или оценка ситуации</label><label><input type="radio" name="q9" value="0"> Эмоция и мысль всегда являются одним и тем же</label><label><input type="radio" name="q9" value="0"> Эмоция — это только внешнее действие</label><label><input type="radio" name="q9" value="0"> Мысль возникает только после действия</label></div>
+<div class="q"><b>10. Расставьте приоритеты действий при сильном эмоциональном напряжении.</b><label><input type="radio" name="q10" value="1"> 1) пауза и стабилизация  2) понимание эмоции  3) оценка вариантов  4) выбор реакции</label><label><input type="radio" name="q10" value="0"> 1) ответить  2) повысить голос  3) разобраться  4) успокоиться</label><label><input type="radio" name="q10" value="0"> 1) обвинить  2) доказать правоту  3) остановиться  4) выслушать</label><label><input type="radio" name="q10" value="0"> 1) игнорировать  2) подавить  3) забыть  4) продолжить спор</label></div>
+<button class="btn" type="submit">Завершить тест</button>
+<div class="result" id="result"></div>
+</form></div></section>
+
+<section id="stats" class="dark"><div class="inner"><div class="num">07</div><h2 class="title">Статистика успеваемости</h2><p class="sub">Демо-блок для преподавателя: результат конкретного прохождения отображается ниже и может быть перенесён в электронный журнал или таблицу.</p>
+<div class="stats-wrap"><div class="stat-card"><h3>Текущее прохождение</h3><div class="score" id="statScore">—</div><p class="mini">Средний балл группы можно рассчитывать по накопленным ответам в Google Sheets/журнале преподавателя.</p><div class="bar"><span id="progress"></span></div><p class="mini">Визуальный индикатор результата</p></div>
+<div class="stat-card"><h3>Модель прогресса</h3><p class="mini">При регулярной практике можно сравнивать средний результат по занятиям: например, стартовая диагностика → промежуточный тест → итоговый тест.</p><div class="bar"><span style="width:72%"></span></div><p class="mini">Демо-ориентир: 72% усвоения материала</p></div></div>
+<div class="email-box"><h3>Отправить результат преподавателю</h3><p class="mini">Введи адрес преподавателя и откроется письмо с результатом теста в почтовом приложении.</p><input id="teacherEmail" type="email" placeholder="teacher@example.ru"><button class="btn" type="button" onclick="sendResult()">Отправить результат</button></div></div></section>
+
+<section id="facts"><div class="inner"><div class="num">08</div><h2 class="title">Интересные факты и закрепление</h2><div class="facts">
+<div class="fact"><strong>01</strong><p>Одна и та же ситуация может вызывать разные эмоции у разных людей: значение имеет не только событие, но и его восприятие.</p></div>
+<div class="fact"><strong>02</strong><p>Точное название чувства помогает сделать внутреннее состояние более понятным и подобрать подходящий способ реакции.</p></div>
+<div class="fact"><strong>03</strong><p>Эмпатия — это понимание переживания другого человека, а не обязательное согласие с его мнением или поступком.</p></div>
+<div class="fact"><strong>04</strong><p>Эмоциональный интеллект развивается через практику: наблюдение за собой, обратную связь, рефлексию и тренировку общения.</p></div>
+<div class="fact"><strong>05</strong><p>Активное слушание включает внимание к словам, уточнение смысла и проверку того, правильно ли вы поняли собеседника.</p></div>
+<div class="fact"><strong>06</strong><p>Саморегуляция не равна подавлению эмоций: цель — сохранить возможность выбирать поведение, даже когда чувство сильное.</p></div>
+</div>
+<div class="reflection"><h3>Закрепление: запомни главное</h3><p><b>Заметь → назови → сделай паузу → пойми потребность → выбери реакцию.</b></p><p>Рефлексия: какую эмоцию сегодня было легче всего распознать? Что помогло тебе её заметить?</p><textarea placeholder="Напиши свой ответ здесь..."></textarea><br><button class="btn" type="button" onclick="saveReflection()">Сохранить рефлексию</button><span id="saved" style="font:14px Arial;margin-left:10px"></span></div></div></section>
+
+<footer>EmoLearn · Демо-урок «Эмоциональный интеллект» · интерактивная версия</footer>
+
+<script>
+const quiz=document.getElementById('quiz');
+quiz.addEventListener('submit',function(e){
+ e.preventDefault();
+ let total=0;
+ for(let i=1;i<=10;i++){
+   const els=[...document.querySelectorAll('[name="q'+i+'"]')];
+   if(els[0].type==='checkbox'){
+     const chosen=els.filter(x=>x.checked).map(x=>x.value).sort().join('');
+     const correct=els.filter(x=>x.value==='1').map(x=>x.value).sort().join('');
+     if(chosen===correct) total++;
+   }else{
+     const chosen=els.find(x=>x.checked);
+     if(chosen && chosen.value==='1') total++;
+   }
+ }
+ const pct=total*10;
+ let level=total>=9?'Отлично! Материал усвоен уверенно.':total>=7?'Хороший результат. Повтори темы, где были сомнения.':total>=5?'Базовое понимание есть. Вернись к видео и практическим упражнениям.':'Стоит пройти урок ещё раз и затем повторить тест.';
+ document.getElementById('result').innerHTML='<div class="score">'+total+' / 10 баллов · '+pct+'%</div><p>'+level+'</p>';
+ document.getElementById('result').classList.add('show');
+ document.getElementById('statScore').textContent=total+'/10';
+ document.getElementById('progress').style.width=pct+'%';
+ document.getElementById('stats').scrollIntoView({behavior:'smooth'});
+});
+function sendResult(){
+ const email=document.getElementById('teacherEmail').value.trim();
+ const score=document.getElementById('statScore').textContent;
+ if(!email){alert('Введите email преподавателя.');return}
+ if(score==='—'){alert('Сначала завершите тест.');return}
+ const subject=encodeURIComponent('Результат теста — Эмоциональный интеллект');
+ const body=encodeURIComponent('Результат прохождения теста EmoLearn: '+score+'.');
+ window.location.href='mailto:'+email+'?subject='+subject+'&body='+body;
+}
+function saveReflection(){document.getElementById('saved').textContent='✓ Ответ сохранён на этой странице';}
+</script>
+</body>
+</html>
